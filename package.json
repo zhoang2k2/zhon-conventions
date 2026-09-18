@@ -1,0 +1,21 @@
+{
+  "name": "zhon-convension",
+  "version": "0.1.0",
+  "description": "A portable Codex coding-conventions skill installer.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "zhon-convension": "./scripts/install-skill.mjs"
+  },
+  "files": [
+    "skills",
+    "scripts",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test tests/install-skill.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
