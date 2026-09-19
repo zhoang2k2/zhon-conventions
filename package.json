@@ -1,11 +1,44 @@
 {
-  "name": "zhon-convension",
+  "name": "zhon-conventions",
   "version": "0.1.0",
-  "description": "A portable Codex coding-conventions skill installer.",
-  "private": true,
+  "description": "Frontend coding conventions, clean code standards, and AI agent skill installer.",
+  "keywords": [
+    "frontend",
+    "frontend-conventions",
+    "coding-conventions",
+    "code-conventions",
+    "coding-standards",
+    "best-practices",
+    "clean-code",
+    "react",
+    "tailwind",
+    "bem",
+    "jsx",
+    "accessibility",
+    "a11y",
+    "code-quality",
+    "codex",
+    "codex-skill",
+    "agent-skill",
+    "ai-agent",
+    "zhon",
+    "zhon-conventions"
+  ],
+  "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhoang2k2/zhon-conventions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhoang2k2/zhon-conventions/issues"
+  },
+  "homepage": "https://github.com/zhoang2k2/zhon-conventions#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
-    "zhon-convension": "./scripts/install-skill.mjs"
+    "zhon-conventions": "./scripts/install-skill.mjs"
   },
   "files": [
     "skills",
@@ -13,6 +46,7 @@
     "README.md"
   ],
   "scripts": {
+    "prepack": "node --test tests/install-skill.test.mjs",
     "test": "node --test tests/install-skill.test.mjs"
   },
   "engines": {

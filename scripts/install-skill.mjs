@@ -1,8 +1,9 @@
+#!/usr/bin/env node
 import { cp, lstat, mkdir, readFile, rm } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const skillName = "zhon-convension";
+const skillName = "zhon-conventions";
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const sourceSkillPath = resolve(scriptDirectory, "../skills", skillName);
 

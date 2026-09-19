@@ -1,24 +1,36 @@
-# zhon-convension
+# zhon-conventions
 
-A portable Codex skill that applies consistent frontend and full-stack coding conventions.
+A portable Codex & AI coding agent skill that applies consistent frontend and full-stack coding conventions.
 
 It provides common rules for component boundaries, JSX logic separation, conditional flow, Tailwind with BEM hooks, semantic HTML, and accessibility. Project-specific concerns stay opt-in through edge rules.
 
 ## Install into a project
 
-The installer copies the skill into the current project's `.agents/skills/zhon-convension` directory. It does not add runtime dependencies to the application.
+The installer copies the skill into the current project's `.agents/skills/zhon-conventions` directory. It does not add runtime dependencies to the application.
+
+### One-time installation
 
 ```bash
 cd /path/to/your-project
-pnpm dlx github:<GITHUB_OWNER>/zhon-convension#v0.1.0
+pnpm dlx zhon-conventions
 ```
 
-Replace `<GITHUB_OWNER>` with the account or organisation that owns the repository. Use a Git tag, such as `v0.1.0`, so every project gets a reproducible version.
+Use this when a project only needs a local copy of the skill. It does not modify `package.json` or the lockfile.
 
-After installation, ask Codex to use it explicitly:
+### Install as a development dependency
+
+```bash
+cd /path/to/your-project
+pnpm add -D zhon-conventions
+pnpm exec zhon-conventions
+```
+
+Use this when the project should lock the installer version in `package.json` and `pnpm-lock.yaml`. The package is a development-only tool; it is not shipped to the browser or production runtime.
+
+After installation, ask your agent (Codex / Gemini / Claude) to use it explicitly:
 
 ```text
-$zhon-convension Refactor this form and preserve the existing design system.
+$zhon-conventions Refactor this form and preserve the existing design system.
 ```
 
 ## Update the installed skill
@@ -27,13 +39,20 @@ An existing skill is never overwritten by default. Update it explicitly:
 
 ```bash
 cd /path/to/your-project
-pnpm dlx github:<GITHUB_OWNER>/zhon-convension#v0.2.0 --update
+pnpm dlx zhon-conventions --update
+```
+
+For a development dependency:
+
+```bash
+pnpm up -D zhon-conventions
+pnpm exec zhon-conventions --update
 ```
 
 For local development, run the installer from this repository while your shell is in the target project:
 
 ```bash
-node /absolute/path/to/zhon-convension/scripts/install-skill.mjs
+node /absolute/path/to/zhon-conventions/scripts/install-skill.mjs
 ```
 
 Use `--target ./custom/skill-path` only when a project intentionally uses a different skill directory.
@@ -63,18 +82,19 @@ Use these statuses:
 | `active` | Apply the rule only when the current task touches it. |
 | `inactive` | Deliberately ignore it for this project. |
 
-The edge-rule registry is at [skills/zhon-convension/references/edge-rule-registry.md](skills/zhon-convension/references/edge-rule-registry.md). Add a dedicated local skill or specification as the source of truth whenever an edge rule needs detailed instructions.
+The edge-rule registry is at [skills/zhon-conventions/references/edge-rule-registry.md](skills/zhon-conventions/references/edge-rule-registry.md). Add a dedicated local skill or specification as the source of truth whenever an edge rule needs detailed instructions.
 
-## Release a GitHub version
+## Publish to npm
 
-This repository is intentionally private to prevent accidental npm publishing. After creating a GitHub repository and pushing the first commit, create a Git tag:
+The package name `zhon-conventions` is configured for the npm registry. Authenticate using the npm account that will own the package, then publish from a clean working tree:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+pnpm login
+pnpm test
+pnpm publish --access public
 ```
 
-Users can then install exactly that version with the command above. Remove `"private": true` only if you intentionally want to publish this package to the npm registry.
+`prepack` runs the installer tests again immediately before packaging. Publish each new release with a new semantic version in `package.json`, for example `0.1.1`.
 
 ## Commands
 
@@ -83,4 +103,3 @@ pnpm test
 ```
 
 The test suite verifies a first installation and protects against accidental overwrite without `--update`.
-# zhon-convension

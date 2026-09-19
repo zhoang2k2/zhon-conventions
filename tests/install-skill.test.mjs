@@ -6,24 +6,24 @@ import test from "node:test";
 
 import { installSkill } from "../scripts/install-skill.mjs";
 
-const skillName = "zhon-convension";
+const skillName = "zhon-conventions";
 
 test("installs the skill into a project-local .agents directory", async () => {
-  const temporaryDirectory = await mkdtemp(resolve(tmpdir(), "zhon-convension-"));
+  const temporaryDirectory = await mkdtemp(resolve(tmpdir(), "zhon-conventions-"));
   const targetSkillPath = resolve(temporaryDirectory, ".agents/skills", skillName);
 
   try {
     await installSkill({ allowUpdate: false, targetSkillPath });
 
     const installedSkill = await readFile(resolve(targetSkillPath, "SKILL.md"), "utf8");
-    assert.match(installedSkill, /^name: zhon-convension$/m);
+    assert.match(installedSkill, /^name: zhon-conventions$/m);
   } finally {
     await rm(temporaryDirectory, { force: true, recursive: true });
   }
 });
 
 test("does not overwrite an installed skill unless update is explicit", async () => {
-  const temporaryDirectory = await mkdtemp(resolve(tmpdir(), "zhon-convension-"));
+  const temporaryDirectory = await mkdtemp(resolve(tmpdir(), "zhon-conventions-"));
   const targetSkillPath = resolve(temporaryDirectory, ".agents/skills", skillName);
 
   try {

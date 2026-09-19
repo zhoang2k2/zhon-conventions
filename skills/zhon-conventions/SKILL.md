@@ -1,5 +1,5 @@
 ---
-name: zhon-convension
+name: zhon-conventions
 description: Apply reusable frontend and full-stack coding conventions, including JSX logic separation, conditional-flow rules, semantic HTML, and Tailwind-friendly BEM hooks. Use when writing or refactoring application code.
 ---
 
